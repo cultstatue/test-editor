@@ -18,6 +18,9 @@ This is a simple text editor PWA that accepts javascript syntax. The application
 
   ## Usage
  Check out the live deployment here:
+ https://powerful-fjord-71283.herokuapp.com/
+ 
+ ![Screen Shot 2022-10-02 at 7 54 03 PM](https://user-images.githubusercontent.com/105083634/193481934-0bf969c3-2808-47af-aa90-a84adfeb9631.png)
   ## Contribution
   N/A
 
