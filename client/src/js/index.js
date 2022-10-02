@@ -3,6 +3,13 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 
+import Logo from '../images/logo.png';
+
+// get images
+window.addEventListener('load', function () {
+  document.getElementById('logo').src = Logo;
+});
+
 const main = document.querySelector('#main');
 main.innerHTML = '';
 
