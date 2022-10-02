@@ -1,12 +1,14 @@
 import { Workbox } from 'workbox-window';
 import Editor from './editor';
-import './database';
+// import './database';
 import '../css/style.css';
 
 import Logo from '../images/logo.png';
 
-// get images
+import { initDb } from './database';
+
 window.addEventListener('load', function () {
+  initDb();
   document.getElementById('logo').src = Logo;
 });
 

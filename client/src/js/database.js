@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
 
-const initdb = async () =>
+export const initDb = async () =>
   openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
@@ -17,5 +17,3 @@ export const putDb = async (content) => console.error('putDb not implemented');
 
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => console.error('getDb not implemented');
-
-initdb();
