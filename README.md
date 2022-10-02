@@ -14,7 +14,7 @@ This is a simple text editor PWA that accepts javascript syntax. The application
   
 
   ## Installation
-    Navigate to the given website URL and locate the install button.
+   Navigate to the given website URL and locate the install button.
 
   ## Usage
  Check out the live deployment here:
