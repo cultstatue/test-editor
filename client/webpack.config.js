@@ -1,11 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const { InjectManifest } = require('workbox-webpack-plugin');
-
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-const WorkboxPlugin = require('workbox-webpack-plugin');
-
 const path = require('path');
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = () => {
   return {
@@ -23,29 +19,32 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
-      new WorkboxPlugin.GenerateSW({
-        // Do not precache images
-        exclude: [/\.(?:png|jpg|jpeg|svg)$/],
-    
-        // Define runtime caching rules.
-        runtimeCaching: [{
-          // Match any request that ends with .png, .jpg, .jpeg or .svg.
-          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-    
-          // Apply a cache-first strategy.
-          handler: 'CacheFirst',
-    
-          options: {
-            // Use a custom cache name.
-            cacheName: 'images',
-    
-            // Only cache 1 images
-            expiration: {
-              maxEntries: 1,
-            },
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+      new WebpackPwaManifest({
+        name: 'Just Another text Editor',
+        short_name: 'JATE',
+        description: 'Take notes with Javascript syntax and highlighting!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
           },
-        }],
-      })
+          {
+            src: path.resolve('src/images/logo.png'),
+            size: '1024x1024',
+            destination: path.join('assets', 'icons'),
+            purpose: 'maskable'
+          }
+        ],
+      }),
     ],
 
     module: {
